@@ -1014,6 +1014,8 @@ namespace GestorColecciones {
             
             private global::System.Data.DataColumn columnFecha;
             
+            private global::System.Data.DataColumn columnFechaDevolucion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PrestamosDataTable() {
@@ -1081,6 +1083,14 @@ namespace GestorColecciones {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FechaDevolucionColumn {
+                get {
+                    return this.columnFechaDevolucion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1116,13 +1126,14 @@ namespace GestorColecciones {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PrestamosRow AddPrestamosRow(LIBROSRow parentLIBROSRowByFK_Prestamos_LIBROS, PersonasRow parentPersonasRowByFK_Prestamos_Personas, System.DateTime Fecha) {
+            public PrestamosRow AddPrestamosRow(LIBROSRow parentLIBROSRowByFK_Prestamos_LIBROS, PersonasRow parentPersonasRowByFK_Prestamos_Personas, System.DateTime Fecha, System.DateTime FechaDevolucion) {
                 PrestamosRow rowPrestamosRow = ((PrestamosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
-                        Fecha};
+                        Fecha,
+                        FechaDevolucion};
                 if ((parentLIBROSRowByFK_Prestamos_LIBROS != null)) {
                     columnValuesArray[1] = parentLIBROSRowByFK_Prestamos_LIBROS[0];
                 }
@@ -1162,6 +1173,7 @@ namespace GestorColecciones {
                 this.columnFkLibro = base.Columns["FkLibro"];
                 this.columnFkPersona = base.Columns["FkPersona"];
                 this.columnFecha = base.Columns["Fecha"];
+                this.columnFechaDevolucion = base.Columns["FechaDevolucion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1175,6 +1187,8 @@ namespace GestorColecciones {
                 base.Columns.Add(this.columnFkPersona);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
+                this.columnFechaDevolucion = new global::System.Data.DataColumn("FechaDevolucion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaDevolucion);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdPrestamo}, true));
                 this.columnIdPrestamo.AutoIncrement = true;
@@ -1640,6 +1654,22 @@ namespace GestorColecciones {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime FechaDevolucion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePrestamos.FechaDevolucionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaDevolucion\' de la tabla \'Prestamos\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrestamos.FechaDevolucionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LIBROSRow LIBROSRow {
                 get {
                     return ((LIBROSRow)(this.GetParentRow(this.Table.ParentRelations["FK_Prestamos_LIBROS"])));
@@ -1670,6 +1700,18 @@ namespace GestorColecciones {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFechaNull() {
                 this[this.tablePrestamos.FechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFechaDevolucionNull() {
+                return this.IsNull(this.tablePrestamos.FechaDevolucionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFechaDevolucionNull() {
+                this[this.tablePrestamos.FechaDevolucionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1962,12 +2004,18 @@ SELECT IdLibro, Titulo, Descripcion, FechaCompra, FechaLectura, Portada FROM LIB
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IdLibro, Titulo, Descripcion, FechaCompra, FechaLectura, Portada FROM dbo." +
                 "LIBROS";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT  IdLibro, Titulo, Descripcion, FechaCompra, FechaLectura, Portada    \r\nFRO" +
+                "M  LIBROS\r\nWHERE    (IdLibro = @IdLibro)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdLibro", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdLibro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1989,6 +2037,32 @@ SELECT IdLibro, Titulo, Descripcion, FechaCompra, FechaLectura, Portada FROM LIB
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ColeccionesDS.LIBROSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ColeccionesDS.LIBROSDataTable dataTable = new ColeccionesDS.LIBROSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(ColeccionesDS.LIBROSDataTable dataTable, int IdLibro) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(IdLibro));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ColeccionesDS.LIBROSDataTable GetDataBy(int IdLibro) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(IdLibro));
             ColeccionesDS.LIBROSDataTable dataTable = new ColeccionesDS.LIBROSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2777,11 +2851,17 @@ SELECT IdPrestamo, FkLibro, FkPersona, Fecha FROM Prestamos WHERE (IdPrestamo = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IdPrestamo, FkLibro, FkPersona, Fecha FROM dbo.Prestamos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        TOP (1) IdPrestamo, FkLibro, FkPersona, Fecha, FechaDevolucion\r\nFRO" +
+                "M            Prestamos\r\nWHERE        (FkLibro = @IdLibro)\r\nORDER BY Fecha DESC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdLibro", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "FkLibro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2803,6 +2883,32 @@ SELECT IdPrestamo, FkLibro, FkPersona, Fecha FROM Prestamos WHERE (IdPrestamo = 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual ColeccionesDS.PrestamosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            ColeccionesDS.PrestamosDataTable dataTable = new ColeccionesDS.PrestamosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByLast(ColeccionesDS.PrestamosDataTable dataTable, int IdLibro) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(IdLibro));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ColeccionesDS.PrestamosDataTable GetDataByLast(int IdLibro) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(IdLibro));
             ColeccionesDS.PrestamosDataTable dataTable = new ColeccionesDS.PrestamosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

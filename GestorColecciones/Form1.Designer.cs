@@ -30,17 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.coleccionesDS = new GestorColecciones.ColeccionesDS();
-            this.lIBROSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lIBROSTableAdapter = new GestorColecciones.ColeccionesDSTableAdapters.LIBROSTableAdapter();
             this.IdLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaLecturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lIBROSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.coleccionesDS = new GestorColecciones.ColeccionesDS();
+            this.lIBROSTableAdapter = new GestorColecciones.ColeccionesDSTableAdapters.LIBROSTableAdapter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmLIBRO = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmPRESTAMO = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coleccionesDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBROSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coleccionesDS)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -53,27 +57,14 @@
             this.descripcionDataGridViewTextBoxColumn,
             this.fechaCompraDataGridViewTextBoxColumn,
             this.fechaLecturaDataGridViewTextBoxColumn});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.lIBROSBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(617, 261);
+            this.dataGridView1.Size = new System.Drawing.Size(730, 271);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // coleccionesDS
-            // 
-            this.coleccionesDS.DataSetName = "ColeccionesDS";
-            this.coleccionesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lIBROSBindingSource
-            // 
-            this.lIBROSBindingSource.DataMember = "LIBROS";
-            this.lIBROSBindingSource.DataSource = this.coleccionesDS;
-            // 
-            // lIBROSTableAdapter
-            // 
-            this.lIBROSTableAdapter.ClearBeforeFill = true;
             // 
             // IdLibro
             // 
@@ -107,19 +98,56 @@
             this.fechaLecturaDataGridViewTextBoxColumn.HeaderText = "FechaLectura";
             this.fechaLecturaDataGridViewTextBoxColumn.Name = "fechaLecturaDataGridViewTextBoxColumn";
             // 
+            // lIBROSBindingSource
+            // 
+            this.lIBROSBindingSource.DataMember = "LIBROS";
+            this.lIBROSBindingSource.DataSource = this.coleccionesDS;
+            // 
+            // coleccionesDS
+            // 
+            this.coleccionesDS.DataSetName = "ColeccionesDS";
+            this.coleccionesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lIBROSTableAdapter
+            // 
+            this.lIBROSTableAdapter.ClearBeforeFill = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmLIBRO,
+            this.tsmPRESTAMO});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 70);
+            // 
+            // tsmLIBRO
+            // 
+            this.tsmLIBRO.Name = "tsmLIBRO";
+            this.tsmLIBRO.Size = new System.Drawing.Size(157, 22);
+            this.tsmLIBRO.Text = "Editar Libro";
+            this.tsmLIBRO.Click += new System.EventHandler(this.tsmLIBRO_Click);
+            // 
+            // tsmPRESTAMO
+            // 
+            this.tsmPRESTAMO.Name = "tsmPRESTAMO";
+            this.tsmPRESTAMO.Size = new System.Drawing.Size(157, 22);
+            this.tsmPRESTAMO.Text = "Editar Préstamo";
+            this.tsmPRESTAMO.Click += new System.EventHandler(this.tsmPRESTAMO_Click);
+            // 
             // frmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 261);
+            this.ClientSize = new System.Drawing.Size(730, 271);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmCatalogo";
             this.Text = "Libros en Biblioteca";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCatalogo_FormClosing);
             this.Load += new System.EventHandler(this.frmCatalogo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coleccionesDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBROSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coleccionesDS)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,6 +163,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCompraDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaLecturaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmLIBRO;
+        private System.Windows.Forms.ToolStripMenuItem tsmPRESTAMO;
     }
 }
 

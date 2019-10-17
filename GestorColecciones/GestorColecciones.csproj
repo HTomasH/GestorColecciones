@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColeccionesDS.cs">
+      <DependentUpon>ColeccionesDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ColeccionesDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +66,12 @@
     <Compile Include="frmEdicion.Designer.cs">
       <DependentUpon>frmEdicion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstado.Designer.cs">
+      <DependentUpon>frmEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -70,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEdicion.resx">
       <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstado.resx">
+      <DependentUpon>frmEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
